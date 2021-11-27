@@ -1,0 +1,21 @@
+body {
+  background-color: #fcde67;
+  color: #030e12;
+  font-family: "Raleway", sans-serif;
+}
+
+h1 {
+  font-family: "Bungee Shade", cursive;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #030e12;
+}
+
+.card {
+  background-color: #5bccf6;
+}
