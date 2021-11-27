@@ -165,3 +165,13 @@ const attemptsDisplay = document.querySelector(".attempts-display");
 const resultDisplay = document.querySelector(".result-container");
 const startOverBtn = document.querySelector("#startOver");
 
+// shuffle function for arrays
+const shuffleStudents = (array) => {
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		const temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+};
+
