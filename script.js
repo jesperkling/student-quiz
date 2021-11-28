@@ -199,7 +199,8 @@ const randomStudent = () => {
 	// add names to buttons
 	randomisedNames.forEach((student) => {
 		if (student == correctName) {
-			btnContainer.innerHTML += `<button type="button" id="correctAnswer" class="btn btn-primary m-2 w-50>${student}</button>`;
+			btnContainer.innerHTML += `
+			<button type="button" id="correctAnswer" class="btn btn-primary m-2 w-50">${student}</button>`;
 		} else {
 			btnContainer.innerHTML += `<button type="button" id="wrongAnswer" class="btn btn-primary m-2 w-50">${student}</button>`;
 		}
