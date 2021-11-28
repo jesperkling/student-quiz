@@ -175,3 +175,36 @@ const shuffleStudents = (array) => {
 	}
 };
 
+// initialize quiz
+const randomStudent = () => {
+	//shuffle array
+	shuffleStudents(students);
+
+	// get 4 random students from array
+	const studentsToGuess = students.slice(0, 4);
+
+	// choose correct student from those 4
+	let correctStudent = students[3];
+	let correctName = correctStudent.name;
+	studentImgEl.src = correctStudent.image;
+
+	// shuffle names in array
+	shuffleStudents(studentsToGuess);
+
+	btnContainer.innerHTML = "";
+
+	const randomisedNames = studentsToGuess.map((students) => students.name);
+	console.log(randomisedNames);
+
+	// add names to buttons
+	randomisedNames.forEach((student) => {
+		if (student == correctName) {
+			btnContainer.innerHTML += `<button type="button" id="correctAnswer" class="btn btn-primary m-2 w-50>${student}</button>`;
+		} else {
+			btnContainer.innerHTML += `<button type="button" id="wrongAnswer" class="btn btn-primary m-2 w-50">${student}</button>`;
+		}
+		console.log(student);
+	});
+};
+
+randomStudent(students);
