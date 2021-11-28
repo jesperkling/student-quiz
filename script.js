@@ -209,3 +209,60 @@ const randomStudent = () => {
 };
 
 randomStudent(students);
+
+// score and guesses
+let guesses = 0;
+let score = 0;
+
+// counting score and guesses
+quizForm.addEventListener("click", (e) => {
+	if (e.target.tagName === "BUTTON") {
+		guesses++;
+
+		if (e.target.id === "correctAnswer") {
+			score++;
+			// show green button
+			e.target.classList.replace("btn-primary", "btn-success");
+		} else {
+			// show red button
+			e.target.classList.replace("btn-primary", "btn-danger");
+		}
+		checkAnswer();
+		showAttempts();
+	}
+});
+
+const checkAnswer = () => {
+	setTimeout(() => {
+		if (guesses < 10) {
+			randomStudent();
+		} else {
+			showResult();
+		}
+	}, 1000);
+};
+
+// display attempts
+const showAttempts = () => {
+	attemptsDisplay.textContent = `Attempts: ${guesses} / 10`;
+};
+
+// display score after 10 questions 
+const showResult = () => {
+	quizForm.classList.add("d-none");
+	resultDisplay.classList.remove("d-none");
+	resultDisplay.innerHTML += `<h3> You got ${score} out of ${guesses}`;
+	startOverBtn.classList.remove("d-none");
+};
+
+// start new game
+startOverBtn.addEventListener("click", (e) => {
+	quizForm.classList.remove("d-none");
+	startOverBtn.classList.add("d-none");
+	resultDisplay.classList.add("d-none");
+	guesses = 0;
+	score = 0;
+	randomStudent(students);
+	resultDisplay.innerHTML = "";
+	attemptsDisplay.textContent = "Round: 0 / 10";
+});
